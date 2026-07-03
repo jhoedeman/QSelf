@@ -1,0 +1,21 @@
+# Xcode
+build/
+DerivedData/
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata
+*.xcuserstate
+*.xcuserdatad/
+xcuserdata/
+.DS_Store
+
+# Generated Info.plist (produced by xcodegen from project.yml)
+QSelf/Info.plist
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# CocoaPods / Carthage (unused, but ignore if introduced)
+Pods/
+Carthage/Build/

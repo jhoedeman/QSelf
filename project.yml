@@ -1,0 +1,79 @@
+name: QSelf
+options:
+  bundleIdPrefix: com.qself
+  deploymentTarget:
+    iOS: "17.0"
+    macOS: "14.0"
+  createIntermediateGroups: true
+
+settings:
+  base:
+    SWIFT_VERSION: "5.10"
+    SUPPORTS_MACCATALYST: NO
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    DEVELOPMENT_TEAM: ""
+    ONLY_ACTIVE_ARCH: YES
+
+targets:
+  QSelf:
+    type: application
+    platform: iOS
+    deploymentTarget:
+      iOS: "17.0"
+    sources:
+      - path: QSelf
+    entitlements:
+      path: QSelf/QSelf.entitlements
+      properties:
+        com.apple.developer.icloud-container-identifiers:
+          - iCloud.com.qself.QSelf
+        com.apple.developer.icloud-services:
+          - CloudKit
+    info:
+      path: QSelf/Info.plist
+      properties:
+        CFBundleDisplayName: QSelf
+        NSHumanReadableCopyright: ""
+        ITSAppUsesNonExemptEncryption: false
+        UILaunchScreen: {}
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: true
+        UIBackgroundModes:
+          - remote-notification
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.qself.QSelf
+        PRODUCT_NAME: QSelf
+        ENABLE_PREVIEWS: YES
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        CODE_SIGN_ENTITLEMENTS: QSelf/QSelf.entitlements
+        DEFINES_MODULE: YES
+      configs:
+        Debug:
+          SWIFT_ENABLE_TESTABILITY: YES
+
+  QSelfTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: QSelfTests
+    dependencies:
+      - target: QSelf
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_NAME: QSelfTests
+        BUNDLE_LOADER: "$(TEST_HOST)"
+
+schemes:
+  QSelf:
+    build:
+      targets:
+        QSelf: all
+        QSelfTests: [test]
+    test:
+      targets:
+        - QSelfTests
