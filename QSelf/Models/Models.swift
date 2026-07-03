@@ -161,6 +161,30 @@ final class MoodTag {
     init(name: String) { self.name = name }
 }
 
+enum MoodTagSentiment {
+    case positive, neutral, negative
+}
+
+extension MoodTag {
+
+    /// Derived from `name` rather than stored — sentiment is a fixed property
+    /// of the pre-seeded tag set, not user data, so it doesn't need to sync.
+    var sentiment: MoodTagSentiment {
+        if Self.positiveNames.contains(name) { return .positive }
+        if Self.negativeNames.contains(name) { return .negative }
+        return .neutral
+    }
+
+    private static let positiveNames: Set<String> = [
+        "Good", "Calm", "Motivated", "Focused", "Confident", "Optimistic", "Sharp", "Content", "Grateful"
+    ]
+
+    private static let negativeNames: Set<String> = [
+        "Irritable", "Anxious", "Restless", "Overwhelmed", "Stressed",
+        "Low mood", "Burnt out", "Sore", "Inflamed", "Crashed"
+    ]
+}
+
 // MARK: - RegimenItem
 
 /// Represents one supplement, peptide, injectable, etc. in the user's active protocol.

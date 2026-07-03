@@ -102,6 +102,7 @@ struct LogView: View {
             FlowLayout(spacing: 8) {
                 ForEach(allTags) { tag in
                     let selected = selectedTags.contains(tag.name)
+                    let tint = tagColor(for: tag.sentiment)
                     Button {
                         if selected { selectedTags.remove(tag.name) }
                         else { selectedTags.insert(tag.name) }
@@ -110,10 +111,10 @@ struct LogView: View {
                             .font(.subheadline)
                             .padding(.horizontal, 12)
                             .padding(.vertical, 6)
-                            .background(selected ? Color.apexArc.opacity(0.15) : Color.clear)
-                            .foregroundStyle(selected ? Color.apexArc : Color.apexTextSecondary)
+                            .background(selected ? tint.opacity(0.15) : Color.clear)
+                            .foregroundStyle(selected ? tint : Color.apexTextSecondary)
                             .clipShape(Capsule())
-                            .overlay(Capsule().stroke(selected ? Color.apexArc : Color.apexBorder, lineWidth: 1))
+                            .overlay(Capsule().stroke(selected ? tint : Color.apexBorder, lineWidth: 1))
                     }
                     .buttonStyle(.plain)
                 }
@@ -127,6 +128,14 @@ struct LogView: View {
                 .lineLimit(4...8)
                 .font(.body)
                 .foregroundStyle(Color.apexTextPrimary)
+        }
+    }
+
+    private func tagColor(for sentiment: MoodTagSentiment) -> Color {
+        switch sentiment {
+        case .positive: return .apexStatusGood
+        case .neutral: return .apexArc
+        case .negative: return .apexStatusPoor
         }
     }
 
