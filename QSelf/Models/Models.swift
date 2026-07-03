@@ -344,8 +344,8 @@ final class LabResult {
 
 extension ModelContainer {
 
-    /// Pass cloudKit: false for SwiftUI previews and unit tests.
-    static func makeContainer(cloudKit: Bool = true) throws -> ModelContainer {
+    /// Pass cloudKit: false and isStoredInMemoryOnly: true for SwiftUI previews and unit tests.
+    static func makeContainer(cloudKit: Bool = true, isStoredInMemoryOnly: Bool = false) throws -> ModelContainer {
         let schema = Schema([
             DailyLog.self,
             MetricValue.self,
@@ -357,7 +357,7 @@ extension ModelContainer {
         ])
         let config = ModelConfiguration(
             schema: schema,
-            isStoredInMemoryOnly: false,
+            isStoredInMemoryOnly: isStoredInMemoryOnly,
             cloudKitDatabase: cloudKit ? .automatic : .none
         )
         return try ModelContainer(for: schema, configurations: [config])

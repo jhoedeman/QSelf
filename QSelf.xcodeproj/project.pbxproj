@@ -8,9 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		0FD40ED7E6006A27F5B650D2 /* QSelfApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11264DB644F1D15DB5979945 /* QSelfApp.swift */; };
+		3CD44841C56016882C1DADC6 /* ComplianceServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC8B1C54CF6EF9D65D3485A /* ComplianceServiceTests.swift */; };
 		73ED40FAC2139045BB93A9AC /* LabCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F0DEEF0659F1ADC2DA41E3 /* LabCatalog.swift */; };
+		7E08A69A38CD6D3979DA5F9A /* RegimenEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B6E242D3E6065EEEDD48E3 /* RegimenEvent.swift */; };
+		869C66F87810720BEE80F9FA /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651473D6142AAA0A6120AA6D /* DataService.swift */; };
+		89181818E14F83A3494ADF6C /* DataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED3F06A2029EE1800E7371A /* DataServiceTests.swift */; };
 		9E1A568190DAA6627BFF0358 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0794AE4CA987AB140190A99 /* Assets.xcassets */; };
 		AE4A155577E3E8B3E3F15320 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D73A494A332C231A61EF98 /* Models.swift */; };
+		E09BAB55DCEEF6324AFF529F /* ComplianceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B19414CC2E840674568ECD /* ComplianceService.swift */; };
 		EB5CB654D515E175A434124E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBB9B9912DABC0377CE5A39 /* ContentView.swift */; };
 		EEBB20D6915B26F91A6BDD44 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450073C1ADDDEF2C41BA9AEB /* ModelTests.swift */; };
 		EF693C8B1E40AEEE0A52674D /* RegimenCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D217DFA957148116369FD86 /* RegimenCatalog.swift */; };
@@ -29,13 +34,18 @@
 /* Begin PBXFileReference section */
 		0CBB9B9912DABC0377CE5A39 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		11264DB644F1D15DB5979945 /* QSelfApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QSelfApp.swift; sourceTree = "<group>"; };
+		18B19414CC2E840674568ECD /* ComplianceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplianceService.swift; sourceTree = "<group>"; };
 		228C1C22D03AEA481EE6D431 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2D217DFA957148116369FD86 /* RegimenCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegimenCatalog.swift; sourceTree = "<group>"; };
 		3E236E0DE18FFF9301085697 /* QSelf.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = QSelf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		450073C1ADDDEF2C41BA9AEB /* ModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
 		541A773E63F301337E458918 /* QSelf.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QSelf.entitlements; sourceTree = "<group>"; };
+		651473D6142AAA0A6120AA6D /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		65D73A494A332C231A61EF98 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		65F0DEEF0659F1ADC2DA41E3 /* LabCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCatalog.swift; sourceTree = "<group>"; };
+		6ED3F06A2029EE1800E7371A /* DataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServiceTests.swift; sourceTree = "<group>"; };
+		7CC8B1C54CF6EF9D65D3485A /* ComplianceServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplianceServiceTests.swift; sourceTree = "<group>"; };
+		A7B6E242D3E6065EEEDD48E3 /* RegimenEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegimenEvent.swift; sourceTree = "<group>"; };
 		C0794AE4CA987AB140190A99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C388EE4961D0C21B7975FE68 /* QSelfTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = QSelfTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -69,6 +79,7 @@
 				541A773E63F301337E458918 /* QSelf.entitlements */,
 				11264DB644F1D15DB5979945 /* QSelfApp.swift */,
 				00A9F1CE4EAE1A2A1D8336AE /* Models */,
+				44ED34EF0A0B0EF7F6F231F6 /* Service */,
 			);
 			path = QSelf;
 			sourceTree = "<group>";
@@ -82,9 +93,21 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		44ED34EF0A0B0EF7F6F231F6 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				18B19414CC2E840674568ECD /* ComplianceService.swift */,
+				651473D6142AAA0A6120AA6D /* DataService.swift */,
+				A7B6E242D3E6065EEEDD48E3 /* RegimenEvent.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		D76A976F4A61837E4E2F6DFB /* QSelfTests */ = {
 			isa = PBXGroup;
 			children = (
+				7CC8B1C54CF6EF9D65D3485A /* ComplianceServiceTests.swift */,
+				6ED3F06A2029EE1800E7371A /* DataServiceTests.swift */,
 				450073C1ADDDEF2C41BA9AEB /* ModelTests.swift */,
 			);
 			path = QSelfTests;
@@ -182,11 +205,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E09BAB55DCEEF6324AFF529F /* ComplianceService.swift in Sources */,
 				EB5CB654D515E175A434124E /* ContentView.swift in Sources */,
+				869C66F87810720BEE80F9FA /* DataService.swift in Sources */,
 				73ED40FAC2139045BB93A9AC /* LabCatalog.swift in Sources */,
 				AE4A155577E3E8B3E3F15320 /* Models.swift in Sources */,
 				0FD40ED7E6006A27F5B650D2 /* QSelfApp.swift in Sources */,
 				EF693C8B1E40AEEE0A52674D /* RegimenCatalog.swift in Sources */,
+				7E08A69A38CD6D3979DA5F9A /* RegimenEvent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +220,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CD44841C56016882C1DADC6 /* ComplianceServiceTests.swift in Sources */,
+				89181818E14F83A3494ADF6C /* DataServiceTests.swift in Sources */,
 				EEBB20D6915B26F91A6BDD44 /* ModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
