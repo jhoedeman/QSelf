@@ -571,3 +571,35 @@ struct RegimenCatalog {
         [.peptide, .nootropic, .injectable, .supplement]
     }
 }
+
+// MARK: - RegimenItem construction
+
+extension CatalogItem {
+
+    /// Builds a `RegimenItem` (with its single default `DoseSlot`) from this
+    /// catalog entry's defaults. Caller is responsible for inserting both the
+    /// item and its dose slots into the `ModelContext`.
+    func makeRegimenItem(startDate: Date = Date()) -> RegimenItem {
+        let item = RegimenItem(name: name, category: category, catalogId: id)
+        item.startDate = startDate
+        item.scheduleType = defaultScheduleType
+        item.isInjectable = isInjectable
+
+        if let cycleDaysOn = defaultCycleDaysOn, let cycleDaysOff = defaultCycleDaysOff {
+            item.cycleDaysOn = cycleDaysOn
+            item.cycleDaysOff = cycleDaysOff
+        }
+        if let activeWeeks = defaultLongCycleActiveWeeks, let restWeeks = defaultLongCycleRestWeeks {
+            item.hasLongCycle = true
+            item.longCycleActiveWeeks = activeWeeks
+            item.longCycleRestWeeks = restWeeks
+            item.longCycleStartDate = startDate
+        }
+
+        let slot = DoseSlot(timeOfDay: defaultTimeOfDay, amount: defaultAmountValue, unit: defaultUnit)
+        slot.regimenItem = item
+        item.doseSlots = [slot]
+
+        return item
+    }
+}

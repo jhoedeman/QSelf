@@ -11,6 +11,7 @@
 		3CD44841C56016882C1DADC6 /* ComplianceServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC8B1C54CF6EF9D65D3485A /* ComplianceServiceTests.swift */; };
 		6F1DC9EF03DCA3B6D4648256 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331BFEB24E82EDFD6F04E040 /* Components.swift */; };
 		73ED40FAC2139045BB93A9AC /* LabCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F0DEEF0659F1ADC2DA41E3 /* LabCatalog.swift */; };
+		77FC6CAAF92376493A021ACA /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF505248161101707D020C5E /* OnboardingView.swift */; };
 		7E08A69A38CD6D3979DA5F9A /* RegimenEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B6E242D3E6065EEEDD48E3 /* RegimenEvent.swift */; };
 		869C66F87810720BEE80F9FA /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651473D6142AAA0A6120AA6D /* DataService.swift */; };
 		89181818E14F83A3494ADF6C /* DataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED3F06A2029EE1800E7371A /* DataServiceTests.swift */; };
@@ -51,6 +52,7 @@
 		6ED3F06A2029EE1800E7371A /* DataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServiceTests.swift; sourceTree = "<group>"; };
 		7CC8B1C54CF6EF9D65D3485A /* ComplianceServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplianceServiceTests.swift; sourceTree = "<group>"; };
 		A7B6E242D3E6065EEEDD48E3 /* RegimenEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegimenEvent.swift; sourceTree = "<group>"; };
+		BF505248161101707D020C5E /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		C0794AE4CA987AB140190A99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C388EE4961D0C21B7975FE68 /* QSelfTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = QSelfTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E38F2E917990939592D1E54C /* LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogView.swift; sourceTree = "<group>"; };
@@ -101,6 +103,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		375D3497B401C5FB30F0DDCA /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				BF505248161101707D020C5E /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		44ED34EF0A0B0EF7F6F231F6 /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +134,7 @@
 			children = (
 				331BFEB24E82EDFD6F04E040 /* Components.swift */,
 				E38F2E917990939592D1E54C /* LogView.swift */,
+				375D3497B401C5FB30F0DDCA /* Onboarding */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -238,6 +249,7 @@
 				73ED40FAC2139045BB93A9AC /* LabCatalog.swift in Sources */,
 				ED5D7BBB632C518C5AE39536 /* LogView.swift in Sources */,
 				AE4A155577E3E8B3E3F15320 /* Models.swift in Sources */,
+				77FC6CAAF92376493A021ACA /* OnboardingView.swift in Sources */,
 				0FD40ED7E6006A27F5B650D2 /* QSelfApp.swift in Sources */,
 				EF693C8B1E40AEEE0A52674D /* RegimenCatalog.swift in Sources */,
 				7E08A69A38CD6D3979DA5F9A /* RegimenEvent.swift in Sources */,

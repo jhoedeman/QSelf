@@ -15,10 +15,26 @@ struct QSelfApp: App {
         }
     }
 
+    /// Set to true to force onboarding on every launch (for testing).
+    private static let forceOnboarding = false
+
+    @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
+    @State private var onboardingDismissed = false
+
+    private var showOnboarding: Bool {
+        Self.forceOnboarding || !hasCompletedOnboarding
+    }
+
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .preferredColorScheme(.dark)
+                .fullScreenCover(isPresented: Binding(
+                    get: { !onboardingDismissed && showOnboarding },
+                    set: { if !$0 { onboardingDismissed = true } }
+                )) {
+                    OnboardingView()
+                }
         }
         .modelContainer(container)
     }
