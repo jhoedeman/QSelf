@@ -70,6 +70,7 @@ struct ManageRegimenView: View {
                 .foregroundStyle(Color.apexTextTertiary)
         }
         .padding(.vertical, 2)
+        .contentShape(Rectangle())
     }
 
     private func scheduleSummary(_ item: RegimenItem) -> String {
