@@ -101,14 +101,16 @@ struct MetricRow: View {
                 Spacer()
                 if !isHidden {
                     Button(action: onMoveUp) { Image(systemName: "chevron.up") }
+                        .foregroundStyle(Color.apexStatusGood)
                         .disabled(!canMoveUp)
                     Button(action: onMoveDown) { Image(systemName: "chevron.down") }
+                        .foregroundStyle(Color.apexStatusPoor)
                         .disabled(!canMoveDown)
                 }
                 Button(action: onToggleVisibility) {
                     Image(systemName: isHidden ? "eye" : "eye.slash")
                 }
-                .tint(isHidden ? .apexArc : .apexTextSecondary)
+                .foregroundStyle(Color.apexArc)
             }
             .buttonStyle(.plain)
             .font(.subheadline)
