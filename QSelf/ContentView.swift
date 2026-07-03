@@ -4,7 +4,7 @@ import SwiftData
 struct ContentView: View {
     var body: some View {
         TabView {
-            Text("Log")
+            LogView()
                 .tabItem { Label("Log", systemImage: "pencil") }
 
             Text("Regimen")
@@ -19,10 +19,14 @@ struct ContentView: View {
             Text("Settings")
                 .tabItem { Label("Settings", systemImage: "gearshape") }
         }
+        .tint(Color.apexArc)
+        .toolbarBackground(Color.apexSurfaceElevated, for: .tabBar)
+        .toolbarColorScheme(.dark, for: .tabBar)
     }
 }
 
 #Preview {
     ContentView()
         .modelContainer(try! ModelContainer.makeContainer(cloudKit: false, isStoredInMemoryOnly: true))
+        .preferredColorScheme(.dark)
 }

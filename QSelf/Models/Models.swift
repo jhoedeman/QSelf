@@ -85,6 +85,15 @@ enum WellbeingMetric: String, Codable, CaseIterable, Identifiable {
     /// Scale maximum (sleep hours uses 12, all others use 10)
     var scaleMax: Double { self == .sleepHours ? 12 : 10 }
 
+    /// Scale minimum (sleep hours starts at 3, jointPain starts at 0, all others start at 1)
+    var scaleMin: Double {
+        switch self {
+        case .sleepHours: return 3
+        case .jointPain: return 0
+        default: return 1
+        }
+    }
+
     /// Default visibility — shown unless the user hides it.
     static var defaultVisible: [WellbeingMetric] {
         [.energy, .mood, .focus, .recovery, .sleepQuality, .sleepHours, .jointPain]

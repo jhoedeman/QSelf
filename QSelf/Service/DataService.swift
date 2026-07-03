@@ -30,6 +30,11 @@ enum DataService {
         return try context.fetch(descriptor)
     }
 
+    static func allMoodTags(context: ModelContext) throws -> [MoodTag] {
+        let descriptor = FetchDescriptor<MoodTag>(sortBy: [SortDescriptor(\.name)])
+        return try context.fetch(descriptor)
+    }
+
     static func activeRegimenItems(context: ModelContext) throws -> [RegimenItem] {
         let descriptor = FetchDescriptor<RegimenItem>(
             predicate: #Predicate { $0.isActive == true },
