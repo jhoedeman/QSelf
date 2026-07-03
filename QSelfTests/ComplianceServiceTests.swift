@@ -83,6 +83,35 @@ struct ComplianceServiceTests {
         #expect(records.filter { calendar.isDate($0.date, inSameDayAs: twoDaysAgo) }.count == 1)
     }
 
+    @Test func fillJobCreatesPendingRecordsForItemsAddedAfterFirstRunTheSameDay() async throws {
+        let context = try makeContext()
+        let service = makeService()
+
+        // Simulate the app's first foreground fill job of the day running
+        // before the user has added anything.
+        await service.runFillJob(context: context)
+
+        // User adds a new item later the same day (e.g. via the catalog).
+        let item = RegimenItem(name: "Magnesium", category: .supplement)
+        item.scheduleType = .daily
+        context.insert(item)
+        let slot = DoseSlot(timeOfDay: .evening, amount: 400, unit: "mg")
+        slot.regimenItem = item
+        item.doseSlots = [slot]
+        context.insert(slot)
+        try context.save()
+
+        // A second fill job the same day (e.g. opening the Regimen tab)
+        // must still create today's pending record for the new item —
+        // it must not be skipped just because the job already ran today.
+        await service.runFillJob(context: context)
+
+        let records = try context.fetch(FetchDescriptor<ComplianceRecord>())
+        let recordForNewItem = records.first { $0.doseSlot?.persistentModelID == slot.persistentModelID }
+
+        #expect(recordForNewItem?.status == .pending)
+    }
+
     @Test func complianceRateCountsTakenAndPartialAsCompliant() async throws {
         let context = try makeContext()
         let calendar = Calendar.current

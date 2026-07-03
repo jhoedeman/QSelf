@@ -57,6 +57,36 @@ enum DataService {
         return try context.fetch(descriptor)
     }
 
+    static func archivedRegimenItems(context: ModelContext) throws -> [RegimenItem] {
+        let descriptor = FetchDescriptor<RegimenItem>(
+            predicate: #Predicate { $0.isActive == false },
+            sortBy: [SortDescriptor(\.name)]
+        )
+        return try context.fetch(descriptor)
+    }
+
+    /// Number of active items sourced from the catalog (catalogId != nil) —
+    /// gated against `RegimenLimits.maxFreeCatalogItems` for free users.
+    static func activeCatalogItemCount(context: ModelContext) throws -> Int {
+        let descriptor = FetchDescriptor<RegimenItem>(
+            predicate: #Predicate { item in
+                item.isActive == true && item.catalogId != nil
+            }
+        )
+        return try context.fetchCount(descriptor)
+    }
+
+    /// catalogIds of every active item sourced from the catalog, for
+    /// disabling/checking off already-added rows in the catalog browser.
+    static func activeCatalogIDs(context: ModelContext) throws -> Set<String> {
+        let descriptor = FetchDescriptor<RegimenItem>(
+            predicate: #Predicate { item in
+                item.isActive == true && item.catalogId != nil
+            }
+        )
+        return Set(try context.fetch(descriptor).compactMap(\.catalogId))
+    }
+
     /// Start, stop, and long-cycle transition events synthesised from every
     /// `RegimenItem` (active or archived) that overlaps the given range, for
     /// the Trends swimlane's regimen markers.

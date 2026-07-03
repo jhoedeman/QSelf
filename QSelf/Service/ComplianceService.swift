@@ -23,14 +23,23 @@ actor ComplianceService {
 
     /// Backfills missed `ComplianceRecord`s for active `RegimenItem`s over the
     /// past 30 days and pre-creates the next 7 days as `.pending`. Safe to call
-    /// unconditionally on every foreground activation — no-ops if it already
-    /// ran today. Never overwrites a record the user has edited.
+    /// unconditionally on every foreground activation. Never overwrites a
+    /// record the user has edited.
+    ///
+    /// The (expensive-ish) 30-day backfill only runs once per calendar day —
+    /// tracked via `lastFillDateKey` — but upcoming-pending creation always
+    /// runs on every call. It's cheap (a handful of days per item) and
+    /// `hasRecord` makes it idempotent, and skipping it after the first call
+    /// of the day would mean a regimen item added later that same day never
+    /// gets a record for today until the next day's fill job runs.
     func runFillJob(context: ModelContext) async {
         let today = calendar.startOfDay(for: Date())
 
-        if let lastRun = defaults.object(forKey: Self.lastFillDateKey) as? Date,
-           calendar.isDate(lastRun, inSameDayAs: today) {
-            return
+        let alreadyRanToday: Bool
+        if let lastRun = defaults.object(forKey: Self.lastFillDateKey) as? Date {
+            alreadyRanToday = calendar.isDate(lastRun, inSameDayAs: today)
+        } else {
+            alreadyRanToday = false
         }
 
         let descriptor = FetchDescriptor<RegimenItem>(
@@ -39,7 +48,9 @@ actor ComplianceService {
         guard let items = try? context.fetch(descriptor) else { return }
 
         for item in items {
-            backfillMissedRecords(for: item, today: today, context: context)
+            if !alreadyRanToday {
+                backfillMissedRecords(for: item, today: today, context: context)
+            }
             createUpcomingPendingRecords(for: item, today: today, context: context)
         }
 

@@ -20,6 +20,7 @@ struct QSelfApp: App {
 
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
     @State private var onboardingDismissed = false
+    @Environment(\.scenePhase) private var scenePhase
 
     private var showOnboarding: Bool {
         Self.forceOnboarding || !hasCompletedOnboarding
@@ -35,8 +36,20 @@ struct QSelfApp: App {
                 )) {
                     OnboardingView()
                 }
+                .onChange(of: scenePhase, initial: true) { _, phase in
+                    if phase == .active { runComplianceFillJob() }
+                }
         }
         .modelContainer(container)
+    }
+
+    /// Runs on every foreground activation, per the brief's compliance fill
+    /// job spec. Idempotent — ComplianceService no-ops if it already ran today.
+    private func runComplianceFillJob() {
+        let backgroundContext = ModelContext(container)
+        Task {
+            await ComplianceService().runFillJob(context: backgroundContext)
+        }
     }
 
     /// Idempotent: safe to call on a device that syncs in existing tags via CloudKit.

@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		085447F82AC0C5C85420E008 /* ComplianceRecordEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41725698E65F04B359F3C59E /* ComplianceRecordEditView.swift */; };
 		0FD40ED7E6006A27F5B650D2 /* QSelfApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11264DB644F1D15DB5979945 /* QSelfApp.swift */; };
 		3CD44841C56016882C1DADC6 /* ComplianceServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC8B1C54CF6EF9D65D3485A /* ComplianceServiceTests.swift */; };
+		3D9C75A19187C4972037F035 /* EditRegimenItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5763004891C872D986B6E47 /* EditRegimenItemView.swift */; };
+		4035294DF84CCABD48A59B87 /* ManageRegimenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DA685FDA353AF2B826A17D /* ManageRegimenView.swift */; };
+		6699C165845D71893EC3B0CB /* CustomMedicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6F5576C286003B158B3A9D /* CustomMedicationView.swift */; };
 		6F1DC9EF03DCA3B6D4648256 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331BFEB24E82EDFD6F04E040 /* Components.swift */; };
 		73ED40FAC2139045BB93A9AC /* LabCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F0DEEF0659F1ADC2DA41E3 /* LabCatalog.swift */; };
 		77FC6CAAF92376493A021ACA /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF505248161101707D020C5E /* OnboardingView.swift */; };
@@ -16,8 +20,12 @@
 		869C66F87810720BEE80F9FA /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651473D6142AAA0A6120AA6D /* DataService.swift */; };
 		89181818E14F83A3494ADF6C /* DataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED3F06A2029EE1800E7371A /* DataServiceTests.swift */; };
 		8A535B8CAD928B8098D645B8 /* Color+Tokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2640F88B7220DD03DC852753 /* Color+Tokens.swift */; };
+		923718A03919B8CE6EFF3EE6 /* InjectionSiteSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB47A3AD5F2A5098EB48DE7C /* InjectionSiteSheet.swift */; };
 		9E1A568190DAA6627BFF0358 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0794AE4CA987AB140190A99 /* Assets.xcassets */; };
+		9F67C706FCADF4017887B483 /* TodayComplianceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DDB1E9ECB97DAD1D921F35 /* TodayComplianceView.swift */; };
+		AD33176651FF3B2E815AC373 /* CatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBA4C11CB8113749FD00BCC /* CatalogView.swift */; };
 		AE4A155577E3E8B3E3F15320 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D73A494A332C231A61EF98 /* Models.swift */; };
+		B396AF44E74C292E3AAF870D /* RegimenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304BF4E56C215A3C389C0F45 /* RegimenView.swift */; };
 		E09BAB55DCEEF6324AFF529F /* ComplianceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B19414CC2E840674568ECD /* ComplianceService.swift */; };
 		EB5CB654D515E175A434124E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBB9B9912DABC0377CE5A39 /* ContentView.swift */; };
 		ED5D7BBB632C518C5AE39536 /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38F2E917990939592D1E54C /* LogView.swift */; };
@@ -42,20 +50,28 @@
 		228C1C22D03AEA481EE6D431 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2640F88B7220DD03DC852753 /* Color+Tokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Tokens.swift"; sourceTree = "<group>"; };
 		2D217DFA957148116369FD86 /* RegimenCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegimenCatalog.swift; sourceTree = "<group>"; };
+		2FBA4C11CB8113749FD00BCC /* CatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogView.swift; sourceTree = "<group>"; };
+		304BF4E56C215A3C389C0F45 /* RegimenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegimenView.swift; sourceTree = "<group>"; };
 		331BFEB24E82EDFD6F04E040 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
 		3E236E0DE18FFF9301085697 /* QSelf.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = QSelf.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		41725698E65F04B359F3C59E /* ComplianceRecordEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplianceRecordEditView.swift; sourceTree = "<group>"; };
 		450073C1ADDDEF2C41BA9AEB /* ModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
 		541A773E63F301337E458918 /* QSelf.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QSelf.entitlements; sourceTree = "<group>"; };
 		651473D6142AAA0A6120AA6D /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		65D73A494A332C231A61EF98 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		65F0DEEF0659F1ADC2DA41E3 /* LabCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCatalog.swift; sourceTree = "<group>"; };
 		6ED3F06A2029EE1800E7371A /* DataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServiceTests.swift; sourceTree = "<group>"; };
+		71DDB1E9ECB97DAD1D921F35 /* TodayComplianceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayComplianceView.swift; sourceTree = "<group>"; };
 		7CC8B1C54CF6EF9D65D3485A /* ComplianceServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplianceServiceTests.swift; sourceTree = "<group>"; };
+		7D6F5576C286003B158B3A9D /* CustomMedicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMedicationView.swift; sourceTree = "<group>"; };
+		87DA685FDA353AF2B826A17D /* ManageRegimenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageRegimenView.swift; sourceTree = "<group>"; };
 		A7B6E242D3E6065EEEDD48E3 /* RegimenEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegimenEvent.swift; sourceTree = "<group>"; };
 		BF505248161101707D020C5E /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		C0794AE4CA987AB140190A99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C388EE4961D0C21B7975FE68 /* QSelfTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = QSelfTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E38F2E917990939592D1E54C /* LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogView.swift; sourceTree = "<group>"; };
+		E5763004891C872D986B6E47 /* EditRegimenItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRegimenItemView.swift; sourceTree = "<group>"; };
+		EB47A3AD5F2A5098EB48DE7C /* InjectionSiteSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectionSiteSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -103,6 +119,21 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		31E204C98B8D75EE4A23AC71 /* Regimen */ = {
+			isa = PBXGroup;
+			children = (
+				2FBA4C11CB8113749FD00BCC /* CatalogView.swift */,
+				41725698E65F04B359F3C59E /* ComplianceRecordEditView.swift */,
+				7D6F5576C286003B158B3A9D /* CustomMedicationView.swift */,
+				E5763004891C872D986B6E47 /* EditRegimenItemView.swift */,
+				EB47A3AD5F2A5098EB48DE7C /* InjectionSiteSheet.swift */,
+				87DA685FDA353AF2B826A17D /* ManageRegimenView.swift */,
+				304BF4E56C215A3C389C0F45 /* RegimenView.swift */,
+				71DDB1E9ECB97DAD1D921F35 /* TodayComplianceView.swift */,
+			);
+			path = Regimen;
+			sourceTree = "<group>";
+		};
 		375D3497B401C5FB30F0DDCA /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +166,7 @@
 				331BFEB24E82EDFD6F04E040 /* Components.swift */,
 				E38F2E917990939592D1E54C /* LogView.swift */,
 				375D3497B401C5FB30F0DDCA /* Onboarding */,
+				31E204C98B8D75EE4A23AC71 /* Regimen */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -241,18 +273,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD33176651FF3B2E815AC373 /* CatalogView.swift in Sources */,
 				8A535B8CAD928B8098D645B8 /* Color+Tokens.swift in Sources */,
+				085447F82AC0C5C85420E008 /* ComplianceRecordEditView.swift in Sources */,
 				E09BAB55DCEEF6324AFF529F /* ComplianceService.swift in Sources */,
 				6F1DC9EF03DCA3B6D4648256 /* Components.swift in Sources */,
 				EB5CB654D515E175A434124E /* ContentView.swift in Sources */,
+				6699C165845D71893EC3B0CB /* CustomMedicationView.swift in Sources */,
 				869C66F87810720BEE80F9FA /* DataService.swift in Sources */,
+				3D9C75A19187C4972037F035 /* EditRegimenItemView.swift in Sources */,
+				923718A03919B8CE6EFF3EE6 /* InjectionSiteSheet.swift in Sources */,
 				73ED40FAC2139045BB93A9AC /* LabCatalog.swift in Sources */,
 				ED5D7BBB632C518C5AE39536 /* LogView.swift in Sources */,
+				4035294DF84CCABD48A59B87 /* ManageRegimenView.swift in Sources */,
 				AE4A155577E3E8B3E3F15320 /* Models.swift in Sources */,
 				77FC6CAAF92376493A021ACA /* OnboardingView.swift in Sources */,
 				0FD40ED7E6006A27F5B650D2 /* QSelfApp.swift in Sources */,
 				EF693C8B1E40AEEE0A52674D /* RegimenCatalog.swift in Sources */,
 				7E08A69A38CD6D3979DA5F9A /* RegimenEvent.swift in Sources */,
+				B396AF44E74C292E3AAF870D /* RegimenView.swift in Sources */,
+				9F67C706FCADF4017887B483 /* TodayComplianceView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
