@@ -147,6 +147,9 @@ struct TodayComplianceView: View {
                             updateStatus(record, to: .skipped)
                         }
                     }
+                    if record.status != .pending {
+                        Button("Undo") { resetToPending(record) }
+                    }
                 }
             }
             .padding(.vertical, 4)
@@ -201,6 +204,18 @@ struct TodayComplianceView: View {
     private func updateStatus(_ record: ComplianceRecord, to status: ComplianceStatus) {
         record.status = status
         record.editedByUser = true
+        try? context.save()
+    }
+
+    /// Reverts an accidental tap/status change back to pending, as opposed
+    /// to "Mark as skipped" which records an intentional decision not to
+    /// take the dose. Clears editedByUser so tomorrow's fill job still
+    /// treats this slot normally if it ends up in the backfill window.
+    private func resetToPending(_ record: ComplianceRecord) {
+        record.status = .pending
+        record.actualAmountValue = nil
+        record.notes = ""
+        record.editedByUser = false
         try? context.save()
     }
 
