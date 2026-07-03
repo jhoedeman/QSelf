@@ -30,6 +30,12 @@ enum DataService {
         return try context.fetch(descriptor)
     }
 
+    /// All lab results, most recent draw first — grouped by date in the Labs tab.
+    static func allLabResults(context: ModelContext) throws -> [LabResult] {
+        let descriptor = FetchDescriptor<LabResult>(sortBy: [SortDescriptor(\.date, order: .reverse)])
+        return try context.fetch(descriptor)
+    }
+
     static func allMoodTags(context: ModelContext) throws -> [MoodTag] {
         let descriptor = FetchDescriptor<MoodTag>(sortBy: [SortDescriptor(\.name)])
         return try context.fetch(descriptor)

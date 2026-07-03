@@ -30,7 +30,9 @@
 		AE4A155577E3E8B3E3F15320 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D73A494A332C231A61EF98 /* Models.swift */; };
 		B0BA5C385F82082452BA3B3F /* UpgradeSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B251BFB020ABCA1F2AD0787 /* UpgradeSheet.swift */; };
 		B396AF44E74C292E3AAF870D /* RegimenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304BF4E56C215A3C389C0F45 /* RegimenView.swift */; };
+		D7DEA07564A367FA42414AD5 /* AddLabDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98A0DDBE67AE183C2FAA4F2 /* AddLabDrawView.swift */; };
 		E09BAB55DCEEF6324AFF529F /* ComplianceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B19414CC2E840674568ECD /* ComplianceService.swift */; };
+		E7C6B9538E595D716999ECD7 /* LabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D82057320C03FF5CE4BB7B1 /* LabsView.swift */; };
 		EB5CB654D515E175A434124E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBB9B9912DABC0377CE5A39 /* ContentView.swift */; };
 		ED5D7BBB632C518C5AE39536 /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38F2E917990939592D1E54C /* LogView.swift */; };
 		EEBB20D6915B26F91A6BDD44 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450073C1ADDDEF2C41BA9AEB /* ModelTests.swift */; };
@@ -67,12 +69,14 @@
 		651473D6142AAA0A6120AA6D /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		65D73A494A332C231A61EF98 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		65F0DEEF0659F1ADC2DA41E3 /* LabCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCatalog.swift; sourceTree = "<group>"; };
+		6D82057320C03FF5CE4BB7B1 /* LabsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LabsView.swift; sourceTree = "<group>"; };
 		6ED3F06A2029EE1800E7371A /* DataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServiceTests.swift; sourceTree = "<group>"; };
 		71DDB1E9ECB97DAD1D921F35 /* TodayComplianceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayComplianceView.swift; sourceTree = "<group>"; };
 		7CC8B1C54CF6EF9D65D3485A /* ComplianceServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplianceServiceTests.swift; sourceTree = "<group>"; };
 		7D6F5576C286003B158B3A9D /* CustomMedicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMedicationView.swift; sourceTree = "<group>"; };
 		87DA685FDA353AF2B826A17D /* ManageRegimenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageRegimenView.swift; sourceTree = "<group>"; };
 		A7B6E242D3E6065EEEDD48E3 /* RegimenEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegimenEvent.swift; sourceTree = "<group>"; };
+		B98A0DDBE67AE183C2FAA4F2 /* AddLabDrawView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AddLabDrawView.swift; sourceTree = "<group>"; };
 		BF505248161101707D020C5E /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		C0794AE4CA987AB140190A99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C388EE4961D0C21B7975FE68 /* QSelfTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = QSelfTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,6 +180,7 @@
 				375D3497B401C5FB30F0DDCA /* Onboarding */,
 				31E204C98B8D75EE4A23AC71 /* Regimen */,
 				75BEE35FD01341968E7432B8 /* Settings */,
+				95B56FFF5D027A7A66CABF01 /* Labs */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -189,6 +194,16 @@
 				2B251BFB020ABCA1F2AD0787 /* UpgradeSheet.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		95B56FFF5D027A7A66CABF01 /* Labs */ = {
+			isa = PBXGroup;
+			children = (
+				6D82057320C03FF5CE4BB7B1 /* LabsView.swift */,
+				B98A0DDBE67AE183C2FAA4F2 /* AddLabDrawView.swift */,
+			);
+			name = Labs;
+			path = Labs;
 			sourceTree = "<group>";
 		};
 		D76A976F4A61837E4E2F6DFB /* QSelfTests */ = {
@@ -216,8 +231,6 @@
 			dependencies = (
 			);
 			name = QSelf;
-			packageProductDependencies = (
-			);
 			productName = QSelf;
 			productReference = 3E236E0DE18FFF9301085697 /* QSelf.app */;
 			productType = "com.apple.product-type.application";
@@ -234,8 +247,6 @@
 				0E5B4A3D01AD9E291370E626 /* PBXTargetDependency */,
 			);
 			name = QSelfTests;
-			packageProductDependencies = (
-			);
 			productName = QSelfTests;
 			productReference = C388EE4961D0C21B7975FE68 /* QSelfTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -317,6 +328,8 @@
 				4A3AB7AB59F789C1BA99EDE5 /* SettingsView.swift in Sources */,
 				9F67C706FCADF4017887B483 /* TodayComplianceView.swift in Sources */,
 				B0BA5C385F82082452BA3B3F /* UpgradeSheet.swift in Sources */,
+				E7C6B9538E595D716999ECD7 /* LabsView.swift in Sources */,
+				D7DEA07564A367FA42414AD5 /* AddLabDrawView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

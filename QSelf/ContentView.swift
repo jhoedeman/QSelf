@@ -10,7 +10,7 @@ struct ContentView: View {
             RegimenView()
                 .tabItem { Label("Regimen", systemImage: "pills") }
 
-            Text("Labs")
+            LabsView()
                 .tabItem { Label("Labs", systemImage: "testtube.2") }
 
             Text("Trends")
