@@ -44,7 +44,8 @@ struct ManageRegimenView: View {
         .listStyle(.insetGrouped)
         .scrollContentBackground(.hidden)
         .background(Color.apexCanvas)
-        .task { await load() }
+        // .onAppear, not .task — see TodayComplianceView for why.
+        .onAppear { Task { await load() } }
         .sheet(item: $editingItem, onDismiss: { Task { await load() } }) { item in
             EditRegimenItemView(item: item)
         }

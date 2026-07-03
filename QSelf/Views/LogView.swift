@@ -61,7 +61,7 @@ struct LogView: View {
                 Text(saveError ?? "")
             }
         }
-        .task { await load() }
+        .onAppear { Task { await load() } }
     }
 
     // MARK: - Cards
@@ -183,19 +183,33 @@ struct LogView: View {
         }
     }
 
+    /// Reloads everything that can go stale while this view stays alive in
+    /// the background tab: MetricPreferences (edited from Settings) and
+    /// today's log (a day boundary crossed while the app stayed open would
+    /// otherwise leave `existingLog` pointing at yesterday's DailyLog, so
+    /// Save would silently overwrite yesterday's entry instead of creating
+    /// today's).
     @MainActor
     private func load() async {
+        prefs = MetricPreferences.load()
+
         do {
             allTags = try DataService.allMoodTags(context: context)
             if let log = try DataService.todaysLog(context: context) {
                 existingLog = log
                 note = log.note
                 selectedTags = Set((log.moodTags ?? []).map(\.name))
+                values = [:]
                 for metric in WellbeingMetric.allCases {
                     if let value = log.value(for: metric) {
                         values[metric] = value
                     }
                 }
+            } else {
+                existingLog = nil
+                note = ""
+                selectedTags = []
+                values = [:]
             }
         } catch {
             saveError = error.localizedDescription

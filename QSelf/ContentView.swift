@@ -16,7 +16,7 @@ struct ContentView: View {
             Text("Trends")
                 .tabItem { Label("Trends", systemImage: "chart.line.uptrend.xyaxis") }
 
-            Text("Settings")
+            SettingsView()
                 .tabItem { Label("Settings", systemImage: "gearshape") }
         }
         .tint(Color.apexArc)

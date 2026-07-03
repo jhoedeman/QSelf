@@ -68,7 +68,11 @@ struct TodayComplianceView: View {
             .padding()
         }
         .background(Color.apexCanvas)
-        .task { await load() }
+        // .onAppear, not .task: this view's identity persists across
+        // Regimen-tab hide/show (TabView keeps tabs alive), so .task would
+        // only ever fire once and go stale — e.g. across a day boundary,
+        // or after edits made elsewhere in the same session.
+        .onAppear { Task { await load() } }
         .sheet(item: $editingRecord) { record in
             ComplianceRecordEditView(record: record)
         }
