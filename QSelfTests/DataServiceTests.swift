@@ -55,6 +55,22 @@ struct DataServiceTests {
         #expect(results.map(\.name) == ["Vitamin D3"])
     }
 
+    @Test func activeCustomMedicationCountOnlyCountsActiveCustomMedications() throws {
+        let context = try makeContext()
+
+        let customMedication = RegimenItem(name: "Sertraline", category: .medication)
+        let archivedCustomMedication = RegimenItem(name: "Old Med", category: .medication)
+        archivedCustomMedication.isActive = false
+        let catalogMedication = RegimenItem(name: "Catalog Med", category: .medication, catalogId: "some-catalog-id")
+        let customSupplement = RegimenItem(name: "Custom Supplement", category: .supplement)
+
+        [customMedication, archivedCustomMedication, catalogMedication, customSupplement].forEach(context.insert)
+        try context.save()
+
+        let count = try DataService.activeCustomMedicationCount(context: context)
+        #expect(count == 1)
+    }
+
     @Test func regimenEventsIncludesStartAndStopWithinRange() throws {
         let context = try makeContext()
         let calendar = Calendar.current

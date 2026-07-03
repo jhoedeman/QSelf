@@ -255,6 +255,7 @@ struct OnboardingView: View {
         case .protein: return "scalemass.fill"
         case .peptide, .injectable: return "syringe.fill"
         case .nootropic: return "brain.head.profile"
+        case .medication: return "cross.case.fill"
         case .other: return "circle.fill"
         }
     }

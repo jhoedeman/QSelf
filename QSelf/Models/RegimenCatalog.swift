@@ -572,6 +572,24 @@ struct RegimenCatalog {
     }
 }
 
+// MARK: - Freemium limits
+
+/// Item-count gating for the free tier. Pro has no cap on either — enforcing
+/// that is just skipping these checks, so no separate Pro constant exists.
+enum RegimenLimits {
+
+    /// Max active RegimenItems drawn from the catalog (any category except
+    /// .medication) a free user may have at once.
+    static let maxFreeCatalogItems = 15
+
+    /// Max active, user-created .medication items (catalogId == nil) a free
+    /// user may have at once. Carved out of the "custom items are Pro-only"
+    /// rule specifically for prescription/psychoactive drug tracking, since
+    /// those aren't in the static catalog and users need them regardless of
+    /// tier to correlate against mental-state metrics.
+    static let maxFreeCustomMedications = 3
+}
+
 // MARK: - RegimenItem construction
 
 extension CatalogItem {

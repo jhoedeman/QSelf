@@ -42,6 +42,8 @@ Support restore purchases. No server-side receipt validation needed for a one-ti
 
 ### Free tier
 - Up to **15 active regimen items**, drawn from the 15 free catalog items only
+- Up to **3 active custom medications** — user-created items in the `.medication` category
+  (see "Custom medications" below). This is a separate counter from the 15 catalog slots.
 - All 12 wellbeing metrics (show/hide/reorder is available to all users)
 - All mood tags
 - Lab tracking (number of panels TBD — do not gate labs in MVP, discuss separately)
@@ -50,15 +52,36 @@ Support restore purchases. No server-side receipt validation needed for a one-ti
 ### Pro tier (unlocked by purchase)
 - **Unlimited** active regimen items
 - Full catalog: peptides, nootropics, injectables, hormonal support, longevity compounds
-- **Custom regimen items** — user-defined name, dose, schedule
+- **Custom regimen items** — user-defined name, dose, schedule, any category
+- **Unlimited custom medications** (no separate cap — the free tier's 3-item limit simply
+  doesn't apply)
 - Advanced chart window (up to 1 year)
 - Appointment summary PDF export
+
+### Custom medications (available to all tiers)
+
+Free users normally cannot create custom (non-catalog) regimen items at all — that's a Pro
+feature. **Custom medications are the one carve-out.** Prescription/psychoactive drugs (SSRIs,
+stimulants, mood stabilizers, etc.) aren't in the static catalog and don't belong there, but
+users need to log them regardless of tier to correlate against mental-state metrics — that's
+a core use case for this app, not a premium add-on.
+
+- A custom medication is a `RegimenItem` with `catalogId == nil` and `category == .medication`
+- Free tier: capped at `RegimenLimits.maxFreeCustomMedications` (3) active custom medications
+- Pro tier: unlimited (no check — same as the rest of Pro's unlimited items)
+- Gate the count with `DataService.activeCustomMedicationCount(context:)` before allowing
+  creation; when a free user hits the cap, the "+ Add" button on the custom-medication form
+  opens the upgrade prompt (not an error)
+- This limit is independent of the 15-item free catalog cap — a free user can have 15 catalog
+  items *and* 3 custom medications at once
 
 ### Gating rules in the UI
 - Locked catalog items are **always visible** — show with a lock badge
 - Tapping a locked item opens an upgrade prompt sheet, not an error message
 - The free slot counter ("X of 15 slots used") is shown at the top of the catalog screen
-- When the user hits the 15-item limit, the "+ Add" button opens an upgrade prompt
+- The free custom-medication counter ("X of 3 custom medications") is shown wherever custom
+  medications are added/managed
+- When the user hits either limit, the "+ Add" button opens an upgrade prompt
 - Never hide Pro features entirely — letting the user see what they're missing is intentional
 
 ---

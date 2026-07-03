@@ -9,6 +9,7 @@ enum RegimenCategory: String, Codable, CaseIterable {
     case nootropic     = "Nootropic"
     case injectable    = "Injectable"
     case protein       = "Protein"
+    case medication    = "Medication"  // user-created prescription drugs, e.g. SSRIs, stimulants
     case other         = "Other"
 }
 

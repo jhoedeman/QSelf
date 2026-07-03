@@ -35,6 +35,20 @@ enum DataService {
         return try context.fetch(descriptor)
     }
 
+    /// Number of active, user-created (catalogId == nil) .medication items —
+    /// gated against `RegimenLimits.maxFreeCustomMedications` for free users.
+    static func activeCustomMedicationCount(context: ModelContext) throws -> Int {
+        // SwiftData's #Predicate macro doesn't support comparing a stored
+        // enum property against a captured enum constant, so category is
+        // filtered in Swift after fetching the (small) custom-item set.
+        let descriptor = FetchDescriptor<RegimenItem>(
+            predicate: #Predicate { item in
+                item.isActive == true && item.catalogId == nil
+            }
+        )
+        return try context.fetch(descriptor).filter { $0.category == .medication }.count
+    }
+
     static func activeRegimenItems(context: ModelContext) throws -> [RegimenItem] {
         let descriptor = FetchDescriptor<RegimenItem>(
             predicate: #Predicate { $0.isActive == true },
