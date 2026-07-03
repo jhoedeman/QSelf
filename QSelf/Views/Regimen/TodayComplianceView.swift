@@ -132,6 +132,18 @@ struct TodayComplianceView: View {
                         .foregroundStyle(Color.apexTextTertiary)
                 }
                 Spacer()
+
+                // Visible "..." menu — the primary, discoverable way to
+                // reach Edit/Skip/Undo. Long-press (contextMenu below) is
+                // kept as a bonus shortcut for users who already know the
+                // gesture, not the only way in.
+                Menu {
+                    recordActions(record)
+                } label: {
+                    Image(systemName: "ellipsis.circle")
+                        .foregroundStyle(Color.apexTextTertiary)
+                }
+
                 Button {
                     handleTap(record: record, item: item, slot: slot)
                 } label: {
@@ -141,20 +153,25 @@ struct TodayComplianceView: View {
                 }
                 .buttonStyle(.plain)
                 .contextMenu {
-                    if record.status == .taken || record.status == .partial {
-                        Button("Edit…") { editingRecord = record }
-                    }
-                    if record.status != .skipped {
-                        Button("Mark as skipped", role: .destructive) {
-                            updateStatus(record, to: .skipped)
-                        }
-                    }
-                    if record.status != .pending {
-                        Button("Undo") { resetToPending(record) }
-                    }
+                    recordActions(record)
                 }
             }
             .padding(.vertical, 4)
+        }
+    }
+
+    @ViewBuilder
+    private func recordActions(_ record: ComplianceRecord) -> some View {
+        if record.status == .taken || record.status == .partial {
+            Button("Edit…") { editingRecord = record }
+        }
+        if record.status != .skipped {
+            Button("Mark as skipped", role: .destructive) {
+                updateStatus(record, to: .skipped)
+            }
+        }
+        if record.status != .pending {
+            Button("Undo") { resetToPending(record) }
         }
     }
 
