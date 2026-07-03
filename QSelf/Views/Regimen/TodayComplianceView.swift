@@ -143,6 +143,8 @@ struct TodayComplianceView: View {
                 .contextMenu {
                     if record.status == .taken || record.status == .partial {
                         Button("Edit…") { editingRecord = record }
+                    }
+                    if record.status != .skipped {
                         Button("Mark as skipped", role: .destructive) {
                             updateStatus(record, to: .skipped)
                         }
