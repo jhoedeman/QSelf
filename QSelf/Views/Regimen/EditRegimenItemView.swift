@@ -1,10 +1,11 @@
 import SwiftUI
 import SwiftData
 
-/// Editor reached from the Manage tab. Covers notes, dose slot amounts, and
-/// daily/specific-days scheduling. Long-cycle protocol editing is out of
-/// scope here — catalog defaults rarely need changing post-add, and a full
-/// cycle editor is a lot of UI for an edge case; revisit if it comes up.
+/// Editor reached from the Manage tab. Covers notes, dose slot time-of-day
+/// and amounts, and daily/specific-days scheduling. Long-cycle protocol
+/// editing is out of scope here — catalog defaults rarely need changing
+/// post-add, and a full cycle editor is a lot of UI for an edge case;
+/// revisit if it comes up.
 struct EditRegimenItemView: View {
     @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss
@@ -105,17 +106,30 @@ struct EditRegimenItemView: View {
     }
 
     private func doseSlotRow(_ slot: DoseSlot) -> some View {
-        HStack {
-            Text(slot.timeOfDay.rawValue)
-            Spacer()
-            TextField("Amount", value: amountBinding(for: slot), format: .number)
-                .keyboardType(.decimalPad)
-                .multilineTextAlignment(.trailing)
-                .frame(width: 80)
-            TextField("Unit", text: unitBinding(for: slot))
-                .multilineTextAlignment(.trailing)
-                .frame(width: 60)
+        VStack(alignment: .leading, spacing: 4) {
+            Picker("Time of day", selection: timeOfDayBinding(for: slot)) {
+                ForEach(TimeOfDay.allCases, id: \.self) { timeOfDay in
+                    Text(timeOfDay.rawValue).tag(timeOfDay)
+                }
+            }
+            HStack {
+                Text("Amount")
+                    .foregroundStyle(.secondary)
+                Spacer()
+                TextField("Amount", value: amountBinding(for: slot), format: .number)
+                    .keyboardType(.decimalPad)
+                    .multilineTextAlignment(.trailing)
+                    .frame(width: 80)
+                TextField("Unit", text: unitBinding(for: slot))
+                    .multilineTextAlignment(.trailing)
+                    .frame(width: 60)
+            }
         }
+        .padding(.vertical, 2)
+    }
+
+    private func timeOfDayBinding(for slot: DoseSlot) -> Binding<TimeOfDay> {
+        Binding(get: { slot.timeOfDay }, set: { slot.timeOfDay = $0 })
     }
 
     private func amountBinding(for slot: DoseSlot) -> Binding<Double> {
