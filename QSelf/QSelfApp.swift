@@ -15,15 +15,17 @@ struct QSelfApp: App {
         }
     }
 
-    /// Set to true to force onboarding on every launch (for testing).
-    private static let forceOnboarding = false
+    /// Manual test override for onboarding, independent of persisted completion
+    /// state: `true` forces onboarding to show on every launch, `false` forces
+    /// it to stay hidden, `nil` uses normal behavior (`hasCompletedOnboarding`).
+    private static let forceOnboardingOverride: Bool? = nil
 
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
     @State private var onboardingDismissed = false
     @Environment(\.scenePhase) private var scenePhase
 
     private var showOnboarding: Bool {
-        Self.forceOnboarding || !hasCompletedOnboarding
+        Self.forceOnboardingOverride ?? !hasCompletedOnboarding
     }
 
     var body: some Scene {
