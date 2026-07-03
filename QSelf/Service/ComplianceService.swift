@@ -11,6 +11,15 @@ actor ComplianceService {
     private static let lookaheadDays = 7
 
     private let calendar = Calendar.current
+    private let defaults: UserDefaults
+
+    /// `defaults` defaults to `.standard` in production. Tests should inject an
+    /// isolated instance (e.g. `UserDefaults(suiteName: UUID().uuidString)!`) so
+    /// the "already ran today" guard doesn't leak state across test invocations
+    /// sharing the same process.
+    init(defaults: UserDefaults = .standard) {
+        self.defaults = defaults
+    }
 
     /// Backfills missed `ComplianceRecord`s for active `RegimenItem`s over the
     /// past 30 days and pre-creates the next 7 days as `.pending`. Safe to call
@@ -19,7 +28,7 @@ actor ComplianceService {
     func runFillJob(context: ModelContext) async {
         let today = calendar.startOfDay(for: Date())
 
-        if let lastRun = UserDefaults.standard.object(forKey: Self.lastFillDateKey) as? Date,
+        if let lastRun = defaults.object(forKey: Self.lastFillDateKey) as? Date,
            calendar.isDate(lastRun, inSameDayAs: today) {
             return
         }
@@ -35,7 +44,7 @@ actor ComplianceService {
         }
 
         try? context.save()
-        UserDefaults.standard.set(today, forKey: Self.lastFillDateKey)
+        defaults.set(today, forKey: Self.lastFillDateKey)
     }
 
     /// Fraction of scheduled dose slots marked `.taken` or `.partial` for this

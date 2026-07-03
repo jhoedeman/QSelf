@@ -10,6 +10,13 @@ struct ComplianceServiceTests {
         return ModelContext(container)
     }
 
+    /// A fresh, isolated UserDefaults suite per test so the fill job's
+    /// "already ran today" guard can't leak state across test invocations
+    /// sharing the same test process.
+    private func makeService() -> ComplianceService {
+        ComplianceService(defaults: UserDefaults(suiteName: UUID().uuidString)!)
+    }
+
     @Test func fillJobBackfillsMissedRecordsAndCreatesUpcomingPending() async throws {
         let context = try makeContext()
         let calendar = Calendar.current
@@ -28,7 +35,7 @@ struct ComplianceServiceTests {
 
         try context.save()
 
-        let service = ComplianceService()
+        let service = makeService()
         await service.runFillJob(context: context)
 
         let records = try context.fetch(FetchDescriptor<ComplianceRecord>())
@@ -66,7 +73,7 @@ struct ComplianceServiceTests {
 
         try context.save()
 
-        let service = ComplianceService()
+        let service = makeService()
         await service.runFillJob(context: context)
 
         let records = try context.fetch(FetchDescriptor<ComplianceRecord>())
@@ -100,7 +107,7 @@ struct ComplianceServiceTests {
         slot.complianceRecords = records
         try context.save()
 
-        let service = ComplianceService()
+        let service = makeService()
         let range = calendar.date(byAdding: .day, value: -10, to: today)!...today
         let rate = await service.complianceRate(for: item, in: range, context: context)
 
