@@ -11,6 +11,8 @@
 		0544F50B07D08117EA7D8BD8 /* NotificationPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453B4DF9699D4AD2C43BC37 /* NotificationPreview.swift */; };
 		085447F82AC0C5C85420E008 /* ComplianceRecordEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41725698E65F04B359F3C59E /* ComplianceRecordEditView.swift */; };
 		0FD40ED7E6006A27F5B650D2 /* QSelfApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11264DB644F1D15DB5979945 /* QSelfApp.swift */; };
+		177353CA901728AB045686A2 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = E3892512E823EA58F1602942 /* Configuration.storekit */; };
+		2160A796806E055A01A907E5 /* ProGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF368562C94AC8230D6CAD21 /* ProGate.swift */; };
 		3CD44841C56016882C1DADC6 /* ComplianceServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC8B1C54CF6EF9D65D3485A /* ComplianceServiceTests.swift */; };
 		3D9C75A19187C4972037F035 /* EditRegimenItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5763004891C872D986B6E47 /* EditRegimenItemView.swift */; };
 		4035294DF84CCABD48A59B87 /* ManageRegimenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DA685FDA353AF2B826A17D /* ManageRegimenView.swift */; };
@@ -29,10 +31,12 @@
 		9A47A52143A4CC54C2281A50 /* MetricLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433ED1928A136AF4556B7B67 /* MetricLayoutView.swift */; };
 		9E1A568190DAA6627BFF0358 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0794AE4CA987AB140190A99 /* Assets.xcassets */; };
 		9F67C706FCADF4017887B483 /* TodayComplianceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DDB1E9ECB97DAD1D921F35 /* TodayComplianceView.swift */; };
+		AC65F39D870CC38994A4DE8D /* PurchaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CDE3E4EC59983AF49C91B7 /* PurchaseService.swift */; };
 		AD33176651FF3B2E815AC373 /* CatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBA4C11CB8113749FD00BCC /* CatalogView.swift */; };
 		AE4A155577E3E8B3E3F15320 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D73A494A332C231A61EF98 /* Models.swift */; };
 		B0BA5C385F82082452BA3B3F /* UpgradeSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B251BFB020ABCA1F2AD0787 /* UpgradeSheet.swift */; };
 		B396AF44E74C292E3AAF870D /* RegimenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304BF4E56C215A3C389C0F45 /* RegimenView.swift */; };
+		BF245639733982B21DF57D99 /* PurchaseServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E626E7323632C2FB8CC0DAC9 /* PurchaseServiceTests.swift */; };
 		D7DEA07564A367FA42414AD5 /* AddLabDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98A0DDBE67AE183C2FAA4F2 /* AddLabDrawView.swift */; };
 		E09BAB55DCEEF6324AFF529F /* ComplianceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B19414CC2E840674568ECD /* ComplianceService.swift */; };
 		E7C6B9538E595D716999ECD7 /* LabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D82057320C03FF5CE4BB7B1 /* LabsView.swift */; };
@@ -80,15 +84,19 @@
 		7CC8B1C54CF6EF9D65D3485A /* ComplianceServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplianceServiceTests.swift; sourceTree = "<group>"; };
 		7D6F5576C286003B158B3A9D /* CustomMedicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMedicationView.swift; sourceTree = "<group>"; };
 		87DA685FDA353AF2B826A17D /* ManageRegimenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageRegimenView.swift; sourceTree = "<group>"; };
+		90CDE3E4EC59983AF49C91B7 /* PurchaseService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PurchaseService.swift; sourceTree = "<group>"; };
 		A7B6E242D3E6065EEEDD48E3 /* RegimenEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegimenEvent.swift; sourceTree = "<group>"; };
 		B98A0DDBE67AE183C2FAA4F2 /* AddLabDrawView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AddLabDrawView.swift; sourceTree = "<group>"; };
+		BF368562C94AC8230D6CAD21 /* ProGate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProGate.swift; sourceTree = "<group>"; };
 		BF505248161101707D020C5E /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		C0794AE4CA987AB140190A99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C388EE4961D0C21B7975FE68 /* QSelfTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = QSelfTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5495E2FA23459E4A2DE0C98 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		E3892512E823EA58F1602942 /* Configuration.storekit */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		E38F2E917990939592D1E54C /* LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogView.swift; sourceTree = "<group>"; };
 		E5763004891C872D986B6E47 /* EditRegimenItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRegimenItemView.swift; sourceTree = "<group>"; };
 		E591120B23073C4990E7B600 /* LabsChart.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LabsChart.swift; sourceTree = "<group>"; };
+		E626E7323632C2FB8CC0DAC9 /* PurchaseServiceTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PurchaseServiceTests.swift; sourceTree = "<group>"; };
 		EB47A3AD5F2A5098EB48DE7C /* InjectionSiteSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectionSiteSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,6 +143,7 @@
 				44ED34EF0A0B0EF7F6F231F6 /* Service */,
 				4E7DCBBC15DA278640988CF0 /* Styling */,
 				64A6F50DD67F55ED82465996 /* Views */,
+				E3892512E823EA58F1602942 /* Configuration.storekit */,
 			);
 			path = QSelf;
 			sourceTree = "<group>";
@@ -177,6 +186,7 @@
 				18B19414CC2E840674568ECD /* ComplianceService.swift */,
 				651473D6142AAA0A6120AA6D /* DataService.swift */,
 				A7B6E242D3E6065EEEDD48E3 /* RegimenEvent.swift */,
+				90CDE3E4EC59983AF49C91B7 /* PurchaseService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -199,6 +209,7 @@
 				75BEE35FD01341968E7432B8 /* Settings */,
 				95B56FFF5D027A7A66CABF01 /* Labs */,
 				023F0A98E4E992B7C659F94C /* Trends */,
+				BF368562C94AC8230D6CAD21 /* ProGate.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -230,6 +241,7 @@
 				7CC8B1C54CF6EF9D65D3485A /* ComplianceServiceTests.swift */,
 				6ED3F06A2029EE1800E7371A /* DataServiceTests.swift */,
 				450073C1ADDDEF2C41BA9AEB /* ModelTests.swift */,
+				E626E7323632C2FB8CC0DAC9 /* PurchaseServiceTests.swift */,
 			);
 			path = QSelfTests;
 			sourceTree = "<group>";
@@ -258,6 +270,7 @@
 			buildConfigurationList = 874907CF3638B30A557D76C5 /* Build configuration list for PBXNativeTarget "QSelfTests" */;
 			buildPhases = (
 				ADD9A0B8432B40F074009210 /* Sources */,
+				FBF73389099DCD27C64FE44A /* Resources */,
 			);
 			buildRules = (
 			);
@@ -315,6 +328,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FBF73389099DCD27C64FE44A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				177353CA901728AB045686A2 /* Configuration.storekit in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -351,6 +372,8 @@
 				6FEA59050EB6817E21A64CDB /* TrendsView.swift in Sources */,
 				032BA4D1D14D13F870564016 /* WellbeingChart.swift in Sources */,
 				537286CA2A24AC5057D24FE3 /* LabsChart.swift in Sources */,
+				AC65F39D870CC38994A4DE8D /* PurchaseService.swift in Sources */,
+				2160A796806E055A01A907E5 /* ProGate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +384,7 @@
 				3CD44841C56016882C1DADC6 /* ComplianceServiceTests.swift in Sources */,
 				89181818E14F83A3494ADF6C /* DataServiceTests.swift in Sources */,
 				EEBB20D6915B26F91A6BDD44 /* ModelTests.swift in Sources */,
+				BF245639733982B21DF57D99 /* PurchaseServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

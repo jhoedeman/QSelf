@@ -1,0 +1,35 @@
+{
+  "identifier" : "5A6A3D2E-9C3B-4B7A-9F0E-1D2C3B4A5E6F",
+  "nonRenewingSubscriptions" : [],
+  "products" : [
+    {
+      "displayPrice" : "29.99",
+      "familyShareable" : false,
+      "internalID" : "6F5E4D3C-2B1A-4C5D-8E7F-0A1B2C3D4E5F",
+      "localizations" : [
+        {
+          "description" : "Unlimited regimen items, the full catalog, custom items, 1-year trends, and PDF export.",
+          "displayName" : "QSelf Pro",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.app.quantifiedself.pro.lifetime",
+      "referenceName" : "QSelf Pro Lifetime",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "0",
+    "_developerTeamID" : "0",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 0,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : []
+  },
+  "subscriptionGroups" : [],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

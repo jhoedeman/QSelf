@@ -1,11 +1,10 @@
 import SwiftUI
 
-/// Feature-list upsell sheet. StoreKit 2 purchase/restore isn't built yet
-/// (separate build-order item), so the action buttons here are honest
-/// placeholders rather than faking an unlock.
+/// Feature-list upsell sheet with the live StoreKit 2 purchase/restore flow.
 struct UpgradeSheet: View {
     @Environment(\.dismiss) private var dismiss
-    @State private var showComingSoon = false
+    @AppStorage("isPro") private var isPro = false
+    @StateObject private var purchaseService = PurchaseService()
 
     private let features = [
         ("infinity", "Unlimited regimen items", "No 15-item cap, full catalog access"),
@@ -53,19 +52,28 @@ struct UpgradeSheet: View {
                     }
 
                     Button {
-                        showComingSoon = true
+                        Task { await purchaseService.purchase() }
                     } label: {
-                        Text("Purchase — Coming soon")
-                            .font(.body.weight(.semibold))
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, 14)
-                            .background(Color.apexArc)
-                            .foregroundStyle(.white)
-                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                        if purchaseService.isPurchasing {
+                            ProgressView()
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 14)
+                                .background(Color.apexArc.opacity(0.5))
+                                .clipShape(RoundedRectangle(cornerRadius: 12))
+                        } else {
+                            Text(purchaseButtonTitle)
+                                .font(.body.weight(.semibold))
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 14)
+                                .background(Color.apexArc)
+                                .foregroundStyle(.white)
+                                .clipShape(RoundedRectangle(cornerRadius: 12))
+                        }
                     }
+                    .disabled(purchaseService.isPurchasing)
 
                     Button("Restore purchases") {
-                        showComingSoon = true
+                        Task { await purchaseService.restorePurchases() }
                     }
                     .foregroundStyle(Color.apexTextSecondary)
                 }
@@ -77,12 +85,26 @@ struct UpgradeSheet: View {
                     Button("Close") { dismiss() }
                 }
             }
-            .alert("Coming soon", isPresented: $showComingSoon) {
+            .task { await purchaseService.loadProduct() }
+            .onChange(of: isPro) { _, unlocked in
+                if unlocked { dismiss() }
+            }
+            .alert("Purchase failed", isPresented: Binding(
+                get: { purchaseService.errorMessage != nil },
+                set: { if !$0 { purchaseService.errorMessage = nil } }
+            )) {
                 Button("OK", role: .cancel) {}
             } message: {
-                Text("In-app purchases aren't live yet — this is a preview of the upgrade flow.")
+                Text(purchaseService.errorMessage ?? "")
             }
         }
+    }
+
+    private var purchaseButtonTitle: String {
+        if let price = purchaseService.product?.displayPrice {
+            return "Purchase — \(price)"
+        }
+        return "Purchase"
     }
 }
 
