@@ -38,7 +38,8 @@ struct UpgradeSheet: View {
                                     Image(systemName: icon)
                                         .font(.system(size: 17, weight: .semibold))
                                         .foregroundStyle(Color.apexPulse)
-                                        .frame(width: 22, height: 22)
+                                        .frame(width: 22, alignment: .leading)
+                                        .offset(x: iconInkOffset(icon))
                                     VStack(alignment: .leading, spacing: 2) {
                                         Text(title)
                                             .font(.subheadline.weight(.medium))
@@ -98,6 +99,19 @@ struct UpgradeSheet: View {
             } message: {
                 Text(purchaseService.errorMessage ?? "")
             }
+        }
+    }
+
+    /// A handful of SF Symbols (infinity, syringe.fill,
+    /// chart.line.uptrend.xyaxis) bake in more left-side bearing than others
+    /// at this weight/size, so .frame(alignment: .leading) alone leaves them
+    /// visibly indented versus slider.horizontal.3 / doc.richtext. Hand-tuned
+    /// against "What you get" — only correct for this fixed icon set.
+    private func iconInkOffset(_ icon: String) -> CGFloat {
+        switch icon {
+        case "infinity", "syringe.fill": return -15
+        case "chart.line.uptrend.xyaxis": return -30
+        default: return 0
         }
     }
 
