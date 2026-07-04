@@ -13,7 +13,7 @@ struct ContentView: View {
             LabsView()
                 .tabItem { Label("Labs", systemImage: "testtube.2") }
 
-            Text("Trends")
+            TrendsView()
                 .tabItem { Label("Trends", systemImage: "chart.line.uptrend.xyaxis") }
 
             SettingsView()
