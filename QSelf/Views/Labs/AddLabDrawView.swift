@@ -10,6 +10,7 @@ struct AddLabDrawView: View {
     @State private var date = Date()
     @State private var labName = ""
     @State private var rows: [TestRow] = [TestRow()]
+    @FocusState private var isInputActive: Bool
 
     private struct TestRow: Identifiable {
         let id = UUID()
@@ -24,12 +25,20 @@ struct AddLabDrawView: View {
         rows.contains { !$0.testName.trimmingCharacters(in: .whitespaces).isEmpty && Double($0.value) != nil }
     }
 
+    /// Requires the last row to be saveable before another can be added, so
+    /// rows never silently pile up past what save() will actually persist.
+    private var canAddAnotherTest: Bool {
+        guard let last = rows.last else { return true }
+        return !last.testName.trimmingCharacters(in: .whitespaces).isEmpty && Double(last.value) != nil
+    }
+
     var body: some View {
         NavigationStack {
             Form {
                 Section("Draw") {
                     DatePicker("Date", selection: $date, displayedComponents: .date)
                     TextField("Lab name (optional)", text: $labName)
+                        .focused($isInputActive)
                 }
 
                 Section("Tests") {
@@ -43,8 +52,10 @@ struct AddLabDrawView: View {
                     } label: {
                         Label("Add test", systemImage: "plus")
                     }
+                    .disabled(!canAddAnotherTest)
                 }
             }
+            .scrollDismissesKeyboard(.interactively)
             .navigationTitle("Add Draw")
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
@@ -54,6 +65,10 @@ struct AddLabDrawView: View {
                     Button("Save", action: save)
                         .disabled(!canSave)
                 }
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    Button("Done") { isInputActive = false }
+                }
             }
         }
     }
@@ -62,6 +77,7 @@ struct AddLabDrawView: View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
                 TextField("Test name", text: row.testName)
+                    .focused($isInputActive)
                 Spacer()
                 Circle()
                     .fill(dotColor(row.wrappedValue))
@@ -70,16 +86,20 @@ struct AddLabDrawView: View {
             HStack {
                 TextField("Value", text: row.value)
                     .keyboardType(.decimalPad)
+                    .focused($isInputActive)
                 TextField("Unit", text: row.unit)
                     .frame(width: 70)
+                    .focused($isInputActive)
             }
             HStack {
                 TextField("Ref low", text: row.refLow)
                     .keyboardType(.decimalPad)
+                    .focused($isInputActive)
                 Text("–")
                     .foregroundStyle(.secondary)
                 TextField("Ref high", text: row.refHigh)
                     .keyboardType(.decimalPad)
+                    .focused($isInputActive)
             }
             .font(.caption)
         }
