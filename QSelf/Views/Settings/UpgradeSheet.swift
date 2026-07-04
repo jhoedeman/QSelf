@@ -36,8 +36,9 @@ struct UpgradeSheet: View {
                             ForEach(features, id: \.1) { icon, title, subtitle in
                                 HStack(alignment: .top, spacing: 12) {
                                     Image(systemName: icon)
+                                        .font(.system(size: 17, weight: .semibold))
                                         .foregroundStyle(Color.apexPulse)
-                                        .frame(width: 22)
+                                        .frame(width: 22, height: 22)
                                     VStack(alignment: .leading, spacing: 2) {
                                         Text(title)
                                             .font(.subheadline.weight(.medium))
