@@ -3,9 +3,12 @@ import SwiftData
 
 struct LabsView: View {
     @Environment(\.modelContext) private var context
+    @AppStorage("isPro") private var isPro = false
 
     @State private var results: [LabResult] = []
     @State private var showAddDraw = false
+    @State private var showAppointmentSummary = false
+    @State private var showUpgradeSheet = false
 
     private var groupedByDate: [(Date, [LabResult])] {
         let grouped = Dictionary(grouping: results, by: \.date)
@@ -42,6 +45,18 @@ struct LabsView: View {
             .toolbarBackground(Color.apexCanvas, for: .navigationBar)
             .toolbarColorScheme(.dark, for: .navigationBar)
             .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        if isPro {
+                            showAppointmentSummary = true
+                        } else {
+                            showUpgradeSheet = true
+                        }
+                    } label: {
+                        Image(systemName: isPro ? "square.and.arrow.up" : "lock.fill")
+                    }
+                    .disabled(results.isEmpty)
+                }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         showAddDraw = true
@@ -53,6 +68,12 @@ struct LabsView: View {
             .onAppear(perform: load)
             .sheet(isPresented: $showAddDraw, onDismiss: load) {
                 AddLabDrawView()
+            }
+            .sheet(isPresented: $showAppointmentSummary) {
+                AppointmentSummarySheet()
+            }
+            .sheet(isPresented: $showUpgradeSheet) {
+                UpgradeSheet()
             }
         }
     }

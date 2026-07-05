@@ -12,6 +12,7 @@
 		085447F82AC0C5C85420E008 /* ComplianceRecordEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41725698E65F04B359F3C59E /* ComplianceRecordEditView.swift */; };
 		0FD40ED7E6006A27F5B650D2 /* QSelfApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11264DB644F1D15DB5979945 /* QSelfApp.swift */; };
 		177353CA901728AB045686A2 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = E3892512E823EA58F1602942 /* Configuration.storekit */; };
+		1BFDF7F412DF217237770480 /* AppointmentSummarySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFD7AE90C9D4238F1372E55 /* AppointmentSummarySheet.swift */; };
 		2160A796806E055A01A907E5 /* ProGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF368562C94AC8230D6CAD21 /* ProGate.swift */; };
 		3CD44841C56016882C1DADC6 /* ComplianceServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC8B1C54CF6EF9D65D3485A /* ComplianceServiceTests.swift */; };
 		3D9C75A19187C4972037F035 /* EditRegimenItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5763004891C872D986B6E47 /* EditRegimenItemView.swift */; };
@@ -84,6 +85,7 @@
 		7CC8B1C54CF6EF9D65D3485A /* ComplianceServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplianceServiceTests.swift; sourceTree = "<group>"; };
 		7D6F5576C286003B158B3A9D /* CustomMedicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMedicationView.swift; sourceTree = "<group>"; };
 		87DA685FDA353AF2B826A17D /* ManageRegimenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageRegimenView.swift; sourceTree = "<group>"; };
+		8AFD7AE90C9D4238F1372E55 /* AppointmentSummarySheet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppointmentSummarySheet.swift; sourceTree = "<group>"; };
 		90CDE3E4EC59983AF49C91B7 /* PurchaseService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PurchaseService.swift; sourceTree = "<group>"; };
 		A7B6E242D3E6065EEEDD48E3 /* RegimenEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegimenEvent.swift; sourceTree = "<group>"; };
 		B98A0DDBE67AE183C2FAA4F2 /* AddLabDrawView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AddLabDrawView.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 			children = (
 				6D82057320C03FF5CE4BB7B1 /* LabsView.swift */,
 				B98A0DDBE67AE183C2FAA4F2 /* AddLabDrawView.swift */,
+				8AFD7AE90C9D4238F1372E55 /* AppointmentSummarySheet.swift */,
 			);
 			name = Labs;
 			path = Labs;
@@ -374,6 +377,7 @@
 				537286CA2A24AC5057D24FE3 /* LabsChart.swift in Sources */,
 				AC65F39D870CC38994A4DE8D /* PurchaseService.swift in Sources */,
 				2160A796806E055A01A907E5 /* ProGate.swift in Sources */,
+				1BFDF7F412DF217237770480 /* AppointmentSummarySheet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
