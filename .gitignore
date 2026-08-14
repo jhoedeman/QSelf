@@ -19,3 +19,6 @@ QSelf/Info.plist
 # CocoaPods / Carthage (unused, but ignore if introduced)
 Pods/
 Carthage/Build/
+
+# Local archive/export build artifacts (regenerate via asc xcode archive/export)
+.asc/artifacts/
