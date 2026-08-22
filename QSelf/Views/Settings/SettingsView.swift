@@ -1,6 +1,8 @@
 import SwiftUI
+import UserNotifications
 
 struct SettingsView: View {
+    @Environment(\.modelContext) private var context
     @AppStorage("isPro") private var isPro = false
 
     // Daily log reminders — same keys onboarding writes to.
@@ -42,7 +44,34 @@ struct SettingsView: View {
             .sheet(isPresented: $showUpgradeSheet) {
                 UpgradeSheet()
             }
+            .onChange(of: dailyLogEnabled) { _, enabled in notificationSettingChanged(requestPermissionIfNeeded: enabled) }
+            .onChange(of: windowStartHour) { _, _ in rescheduleNotifications() }
+            .onChange(of: windowStartMin) { _, _ in rescheduleNotifications() }
+            .onChange(of: windowEndHour) { _, _ in rescheduleNotifications() }
+            .onChange(of: windowEndMin) { _, _ in rescheduleNotifications() }
+            .onChange(of: dailyLogCount) { _, _ in rescheduleNotifications() }
+            .onChange(of: injectionEnabled) { _, enabled in notificationSettingChanged(requestPermissionIfNeeded: enabled) }
+            .onChange(of: injectionHour) { _, _ in rescheduleNotifications() }
+            .onChange(of: injectionMinute) { _, _ in rescheduleNotifications() }
+            .onChange(of: labsDueEnabled) { _, enabled in notificationSettingChanged(requestPermissionIfNeeded: enabled) }
         }
+    }
+
+    // MARK: - Notification scheduling
+
+    private func notificationSettingChanged(requestPermissionIfNeeded: Bool) {
+        if requestPermissionIfNeeded {
+            Task {
+                _ = try? await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge])
+                await NotificationService.reschedule(context: context)
+            }
+        } else {
+            rescheduleNotifications()
+        }
+    }
+
+    private func rescheduleNotifications() {
+        Task { await NotificationService.reschedule(context: context) }
     }
 
     // MARK: - Notifications

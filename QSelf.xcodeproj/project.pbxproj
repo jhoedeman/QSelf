@@ -19,6 +19,7 @@
 		4035294DF84CCABD48A59B87 /* ManageRegimenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DA685FDA353AF2B826A17D /* ManageRegimenView.swift */; };
 		4A3AB7AB59F789C1BA99EDE5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5495E2FA23459E4A2DE0C98 /* SettingsView.swift */; };
 		537286CA2A24AC5057D24FE3 /* LabsChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = E591120B23073C4990E7B600 /* LabsChart.swift */; };
+		63DB337B352575A26236A83D /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAE7F2761E4CC9900A89A1 /* NotificationService.swift */; };
 		6699C165845D71893EC3B0CB /* CustomMedicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6F5576C286003B158B3A9D /* CustomMedicationView.swift */; };
 		6F1DC9EF03DCA3B6D4648256 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331BFEB24E82EDFD6F04E040 /* Components.swift */; };
 		6FEA59050EB6817E21A64CDB /* TrendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C8B9EBDDC0AD8D6FF58B40 /* TrendsView.swift */; };
@@ -75,6 +76,7 @@
 		433ED1928A136AF4556B7B67 /* MetricLayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricLayoutView.swift; sourceTree = "<group>"; };
 		450073C1ADDDEF2C41BA9AEB /* ModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
 		541A773E63F301337E458918 /* QSelf.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QSelf.entitlements; sourceTree = "<group>"; };
+		58AAE7F2761E4CC9900A89A1 /* NotificationService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		651473D6142AAA0A6120AA6D /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		65D73A494A332C231A61EF98 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		65F0DEEF0659F1ADC2DA41E3 /* LabCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCatalog.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				651473D6142AAA0A6120AA6D /* DataService.swift */,
 				A7B6E242D3E6065EEEDD48E3 /* RegimenEvent.swift */,
 				90CDE3E4EC59983AF49C91B7 /* PurchaseService.swift */,
+				58AAE7F2761E4CC9900A89A1 /* NotificationService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 				AC65F39D870CC38994A4DE8D /* PurchaseService.swift in Sources */,
 				2160A796806E055A01A907E5 /* ProGate.swift in Sources */,
 				1BFDF7F412DF217237770480 /* AppointmentSummarySheet.swift in Sources */,
+				63DB337B352575A26236A83D /* NotificationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,8 +436,8 @@
 		59A662B2292490250AC095D5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CURRENT_PROJECT_VERSION = 1;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XY62X6K9VH;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
@@ -475,8 +479,8 @@
 		D67DD02878E841EAF1838049 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CURRENT_PROJECT_VERSION = 1;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XY62X6K9VH;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;

@@ -380,6 +380,7 @@ struct OnboardingView: View {
 
         try? context.save()
         hasCompletedOnboarding = true
+        Task { await NotificationService.reschedule(context: context) }
         dismiss()
     }
 

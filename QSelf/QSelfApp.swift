@@ -39,7 +39,10 @@ struct QSelfApp: App {
                     OnboardingView()
                 }
                 .onChange(of: scenePhase, initial: true) { _, phase in
-                    if phase == .active { runComplianceFillJob() }
+                    if phase == .active {
+                        runComplianceFillJob()
+                        rescheduleNotifications()
+                    }
                 }
         }
         .modelContainer(container)
@@ -51,6 +54,15 @@ struct QSelfApp: App {
         let backgroundContext = ModelContext(container)
         Task {
             await ComplianceService().runFillJob(context: backgroundContext)
+        }
+    }
+
+    /// Re-derives every scheduled local notification from current settings and
+    /// data. Idempotent — safe to call on every foreground activation.
+    private func rescheduleNotifications() {
+        let backgroundContext = ModelContext(container)
+        Task {
+            await NotificationService.reschedule(context: backgroundContext)
         }
     }
 
