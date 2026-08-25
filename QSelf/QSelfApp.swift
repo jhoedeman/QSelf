@@ -13,6 +13,11 @@ struct QSelfApp: App {
         } catch {
             fatalError("Failed to create ModelContainer: \(error)")
         }
+        // TestFlight-only: unlock Pro by default so testers see every feature
+        // without buying anything. Only fills in the default — it never
+        // overwrites an explicit isPro value, so the Settings > Account
+        // toggle below still works normally. Remove before public release.
+        UserDefaults.standard.register(defaults: ["isPro": true])
     }
 
     /// Manual test override for onboarding, independent of persisted completion

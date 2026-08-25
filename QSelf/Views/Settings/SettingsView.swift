@@ -31,6 +31,7 @@ struct SettingsView: View {
                     notificationsCard
                     metricsCard
                     proCard
+                    testingCard
                 }
                 .padding()
             }
@@ -194,6 +195,22 @@ struct SettingsView: View {
             .font(.footnote)
             .foregroundStyle(Color.apexTextSecondary)
             .padding(.top, 4)
+        }
+    }
+
+    // MARK: - Testing
+
+    /// TestFlight/dev-only toggle to flip Pro on/off instantly for testing
+    /// both tiers. Binds directly to the same "isPro" flag StoreKit writes to,
+    /// so it's a real, immediate override — not a separate mock flag. Remove
+    /// this card before public release.
+    private var testingCard: some View {
+        CardSection(title: "Testing") {
+            Toggle("Force Pro unlocked", isOn: $isPro)
+                .tint(Color.apexPulse)
+            Text("Overrides purchase state. For TestFlight/dev use only.")
+                .font(.caption)
+                .foregroundStyle(Color.apexTextTertiary)
         }
     }
 }
