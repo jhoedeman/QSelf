@@ -12,6 +12,7 @@ struct LogView: View {
 
     @State private var existingLog: DailyLog? = nil
     @State private var saveError: String? = nil
+    @State private var justSaved = false
 
     // Layout editing (order + visibility), backed by MetricPreferences in UserDefaults
     @State private var prefs = MetricPreferences.load()
@@ -47,9 +48,18 @@ struct LogView: View {
                     }
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Save", action: save)
-                        .fontWeight(.semibold)
-                        .disabled(isEditingLayout)
+                    Button(action: save) {
+                        if justSaved {
+                            Label("Saved", systemImage: "checkmark")
+                                .labelStyle(.titleAndIcon)
+                                .foregroundStyle(Color.apexStatusGood)
+                        } else {
+                            Text("Save")
+                        }
+                    }
+                    .fontWeight(.semibold)
+                    .disabled(isEditingLayout)
+                    .animation(.easeInOut(duration: 0.2), value: justSaved)
                 }
             }
             .alert("Save failed", isPresented: Binding(
@@ -252,6 +262,13 @@ struct LogView: View {
 
             try context.save()
             existingLog = log
+
+            UINotificationFeedbackGenerator().notificationOccurred(.success)
+            justSaved = true
+            Task {
+                try? await Task.sleep(for: .seconds(1.2))
+                justSaved = false
+            }
         } catch {
             saveError = error.localizedDescription
         }
